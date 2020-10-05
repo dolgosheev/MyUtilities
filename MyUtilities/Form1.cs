@@ -7,7 +7,7 @@ namespace MyUtilities
     public partial class MainForm : Form
     {
         private int count = 0;
-
+        Random rnd = new Random();
 
         public MainForm()
         {
@@ -40,6 +40,12 @@ namespace MyUtilities
         {
             count = 0;
             lblCount.Text = Convert.ToString(0);
+        }
+
+        private void bGenerator_Click(object sender, EventArgs e)
+        {
+            int random = rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value)+1);
+            lblRandom.Text = random.ToString();
         }
     }
 }

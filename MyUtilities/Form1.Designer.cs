@@ -35,15 +35,24 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tGenerator = new System.Windows.Forms.TabPage();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGenerator = new System.Windows.Forms.Button();
+            this.lblRandom = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tMenu.SuspendLayout();
             this.tCounter.SuspendLayout();
+            this.tGenerator.SuspendLayout();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,7 +66,7 @@
             // tMenu
             // 
             this.tMenu.Controls.Add(this.tCounter);
-            this.tMenu.Controls.Add(this.tabPage2);
+            this.tMenu.Controls.Add(this.tGenerator);
             this.tMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tMenu.Location = new System.Drawing.Point(0, 48);
             this.tMenu.Name = "tMenu";
@@ -122,15 +131,21 @@
             this.btnPlus.UseVisualStyleBackColor = true;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
-            // tabPage2
+            // tGenerator
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 376);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tGenerator.Controls.Add(this.label3);
+            this.tGenerator.Controls.Add(this.label2);
+            this.tGenerator.Controls.Add(this.numericUpDown2);
+            this.tGenerator.Controls.Add(this.numericUpDown1);
+            this.tGenerator.Controls.Add(this.lblRandom);
+            this.tGenerator.Controls.Add(this.bGenerator);
+            this.tGenerator.Location = new System.Drawing.Point(4, 22);
+            this.tGenerator.Name = "tGenerator";
+            this.tGenerator.Padding = new System.Windows.Forms.Padding(3);
+            this.tGenerator.Size = new System.Drawing.Size(792, 376);
+            this.tGenerator.TabIndex = 1;
+            this.tGenerator.Text = "Generator";
+            this.tGenerator.UseVisualStyleBackColor = true;
             // 
             // menuStrip2
             // 
@@ -173,6 +188,74 @@
             this.tsmiAbout.Text = "About";
             this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
+            // bGenerator
+            // 
+            this.bGenerator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bGenerator.Location = new System.Drawing.Point(234, 46);
+            this.bGenerator.Name = "bGenerator";
+            this.bGenerator.Size = new System.Drawing.Size(97, 36);
+            this.bGenerator.TabIndex = 0;
+            this.bGenerator.Text = "Generate";
+            this.bGenerator.UseVisualStyleBackColor = true;
+            this.bGenerator.Click += new System.EventHandler(this.bGenerator_Click);
+            // 
+            // lblRandom
+            // 
+            this.lblRandom.AutoSize = true;
+            this.lblRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblRandom.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblRandom.Location = new System.Drawing.Point(236, 85);
+            this.lblRandom.Name = "lblRandom";
+            this.lblRandom.Size = new System.Drawing.Size(16, 20);
+            this.lblRandom.TabIndex = 1;
+            this.lblRandom.Text = "*";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(108, 47);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(109, 26);
+            this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown2.Location = new System.Drawing.Point(108, 80);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(109, 26);
+            this.numericUpDown2.TabIndex = 3;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(44, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "from";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(49, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "to";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,8 +270,12 @@
             this.tMenu.ResumeLayout(false);
             this.tCounter.ResumeLayout(false);
             this.tCounter.PerformLayout();
+            this.tGenerator.ResumeLayout(false);
+            this.tGenerator.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +286,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TabControl tMenu;
         private System.Windows.Forms.TabPage tCounter;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tGenerator;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
@@ -209,6 +296,12 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label lblRandom;
+        private System.Windows.Forms.Button bGenerator;
     }
 }
 
