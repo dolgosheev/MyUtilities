@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.SqlServer.Server;
 
 namespace MyUtilities
 {
     public partial class MainForm : Form
     {
+        private int count = 0;
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -19,12 +16,30 @@ namespace MyUtilities
 
         private void tsmiExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Прграмма мои утилиты \n\nCopyright 2020\n\n\tАвтор : A.Dolgosheev", "О Программе");
+            MessageBox.Show("My utils soft\nAlexander soft\n\n\tCopyright 2020", "About");
+        }
+
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            count++;
+            lblCount.Text = count.ToString();
+        }
+
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            count--;
+            lblCount.Text = count.ToString();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            count = 0;
+            lblCount.Text = Convert.ToString(0);
         }
     }
 }
