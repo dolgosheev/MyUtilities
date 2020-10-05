@@ -36,30 +36,34 @@
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.tGenerator = new System.Windows.Forms.TabPage();
+            this.bRandomCopy = new System.Windows.Forms.Button();
+            this.bRandomClear = new System.Windows.Forms.Button();
+            this.tbRandom = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.lblRandom = new System.Windows.Forms.Label();
+            this.bGenerator = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGenerator = new System.Windows.Forms.Button();
-            this.lblRandom = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.cRandomUniq = new System.Windows.Forms.CheckBox();
             this.tMenu.SuspendLayout();
             this.tCounter.SuspendLayout();
             this.tGenerator.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(473, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,7 +75,7 @@
             this.tMenu.Location = new System.Drawing.Point(0, 48);
             this.tMenu.Name = "tMenu";
             this.tMenu.SelectedIndex = 0;
-            this.tMenu.Size = new System.Drawing.Size(800, 402);
+            this.tMenu.Size = new System.Drawing.Size(473, 268);
             this.tMenu.TabIndex = 1;
             // 
             // tCounter
@@ -83,7 +87,7 @@
             this.tCounter.Location = new System.Drawing.Point(4, 22);
             this.tCounter.Name = "tCounter";
             this.tCounter.Padding = new System.Windows.Forms.Padding(3);
-            this.tCounter.Size = new System.Drawing.Size(792, 376);
+            this.tCounter.Size = new System.Drawing.Size(465, 242);
             this.tCounter.TabIndex = 0;
             this.tCounter.Text = "Counter";
             this.tCounter.UseVisualStyleBackColor = true;
@@ -133,6 +137,10 @@
             // 
             // tGenerator
             // 
+            this.tGenerator.Controls.Add(this.cRandomUniq);
+            this.tGenerator.Controls.Add(this.bRandomCopy);
+            this.tGenerator.Controls.Add(this.bRandomClear);
+            this.tGenerator.Controls.Add(this.tbRandom);
             this.tGenerator.Controls.Add(this.label3);
             this.tGenerator.Controls.Add(this.label2);
             this.tGenerator.Controls.Add(this.numericUpDown2);
@@ -142,10 +150,107 @@
             this.tGenerator.Location = new System.Drawing.Point(4, 22);
             this.tGenerator.Name = "tGenerator";
             this.tGenerator.Padding = new System.Windows.Forms.Padding(3);
-            this.tGenerator.Size = new System.Drawing.Size(792, 376);
+            this.tGenerator.Size = new System.Drawing.Size(465, 242);
             this.tGenerator.TabIndex = 1;
             this.tGenerator.Text = "Generator";
             this.tGenerator.UseVisualStyleBackColor = true;
+            // 
+            // bRandomCopy
+            // 
+            this.bRandomCopy.Location = new System.Drawing.Point(144, 166);
+            this.bRandomCopy.Name = "bRandomCopy";
+            this.bRandomCopy.Size = new System.Drawing.Size(75, 23);
+            this.bRandomCopy.TabIndex = 8;
+            this.bRandomCopy.Text = "Copy";
+            this.bRandomCopy.UseVisualStyleBackColor = true;
+            this.bRandomCopy.Click += new System.EventHandler(this.bRandomCopy_Click);
+            // 
+            // bRandomClear
+            // 
+            this.bRandomClear.Location = new System.Drawing.Point(143, 134);
+            this.bRandomClear.Name = "bRandomClear";
+            this.bRandomClear.Size = new System.Drawing.Size(75, 23);
+            this.bRandomClear.TabIndex = 7;
+            this.bRandomClear.Text = "Clear";
+            this.bRandomClear.UseVisualStyleBackColor = true;
+            this.bRandomClear.Click += new System.EventHandler(this.bRandomClear_Click);
+            // 
+            // tbRandom
+            // 
+            this.tbRandom.Location = new System.Drawing.Point(240, 132);
+            this.tbRandom.Multiline = true;
+            this.tbRandom.Name = "tbRandom";
+            this.tbRandom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRandom.Size = new System.Drawing.Size(91, 102);
+            this.tbRandom.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(49, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "to";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(44, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "from";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown2.Location = new System.Drawing.Point(108, 80);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(109, 26);
+            this.numericUpDown2.TabIndex = 3;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(108, 47);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(109, 26);
+            this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblRandom
+            // 
+            this.lblRandom.AutoSize = true;
+            this.lblRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblRandom.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblRandom.Location = new System.Drawing.Point(236, 85);
+            this.lblRandom.Name = "lblRandom";
+            this.lblRandom.Size = new System.Drawing.Size(16, 20);
+            this.lblRandom.TabIndex = 1;
+            this.lblRandom.Text = "*";
+            // 
+            // bGenerator
+            // 
+            this.bGenerator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bGenerator.Location = new System.Drawing.Point(234, 46);
+            this.bGenerator.Name = "bGenerator";
+            this.bGenerator.Size = new System.Drawing.Size(97, 36);
+            this.bGenerator.TabIndex = 0;
+            this.bGenerator.Text = "Generate";
+            this.bGenerator.UseVisualStyleBackColor = true;
+            this.bGenerator.Click += new System.EventHandler(this.bGenerator_Click);
             // 
             // menuStrip2
             // 
@@ -154,7 +259,7 @@
             this.tsmiHelp});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(473, 24);
             this.menuStrip2.TabIndex = 2;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -188,79 +293,21 @@
             this.tsmiAbout.Text = "About";
             this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
-            // bGenerator
+            // cRandomUniq
             // 
-            this.bGenerator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bGenerator.Location = new System.Drawing.Point(234, 46);
-            this.bGenerator.Name = "bGenerator";
-            this.bGenerator.Size = new System.Drawing.Size(97, 36);
-            this.bGenerator.TabIndex = 0;
-            this.bGenerator.Text = "Generate";
-            this.bGenerator.UseVisualStyleBackColor = true;
-            this.bGenerator.Click += new System.EventHandler(this.bGenerator_Click);
-            // 
-            // lblRandom
-            // 
-            this.lblRandom.AutoSize = true;
-            this.lblRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRandom.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblRandom.Location = new System.Drawing.Point(236, 85);
-            this.lblRandom.Name = "lblRandom";
-            this.lblRandom.Size = new System.Drawing.Size(16, 20);
-            this.lblRandom.TabIndex = 1;
-            this.lblRandom.Text = "*";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(108, 47);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(109, 26);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown2.Location = new System.Drawing.Point(108, 80);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(109, 26);
-            this.numericUpDown2.TabIndex = 3;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(44, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "from";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(49, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "to";
+            this.cRandomUniq.AutoSize = true;
+            this.cRandomUniq.Location = new System.Drawing.Point(340, 49);
+            this.cRandomUniq.Name = "cRandomUniq";
+            this.cRandomUniq.Size = new System.Drawing.Size(46, 17);
+            this.cRandomUniq.TabIndex = 9;
+            this.cRandomUniq.Text = "uniq";
+            this.cRandomUniq.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(473, 316);
             this.Controls.Add(this.tMenu);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
@@ -272,10 +319,10 @@
             this.tCounter.PerformLayout();
             this.tGenerator.ResumeLayout(false);
             this.tGenerator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +349,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lblRandom;
         private System.Windows.Forms.Button bGenerator;
+        private System.Windows.Forms.TextBox tbRandom;
+        private System.Windows.Forms.Button bRandomClear;
+        private System.Windows.Forms.Button bRandomCopy;
+        private System.Windows.Forms.CheckBox cRandomUniq;
     }
 }
 
