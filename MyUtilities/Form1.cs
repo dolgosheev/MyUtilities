@@ -7,7 +7,7 @@ namespace MyUtilities
     {
         private int _count;
         private readonly Random _rnd = new Random();
-
+        char[] specChars = new char[]{'!', '@', '#', '$', '%', '&', '~'};
         public MainForm()
         {
             InitializeComponent();
@@ -91,6 +91,50 @@ namespace MyUtilities
             try
             {
                 rtbNotepad.LoadFile("notepad.rtf");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Load Error", "Error");
+            }
+        }
+
+
+        private void buttonCreatePassword_Click(object sender, EventArgs e)
+        {
+            if(clbPassword.CheckedItems.Count==0)
+                return;
+            string password = "";
+            for (int i = 0; i < nudPassLength.Value; i++)
+            {
+                int n = _rnd.Next(0, clbPassword.CheckedItems.Count);
+                string s = clbPassword.CheckedItems[n].ToString();
+                switch (s)
+                {
+                    case "Cipher":
+                        password += _rnd.Next(10).ToString();
+                        break;
+                    case "Write letters":
+                        password += Convert.ToChar(_rnd.Next(65, 88));
+                        break;
+                    case "String letters":
+                        password += Convert.ToChar(_rnd.Next(97, 122));
+                        break;
+                    default:
+                        password += specChars[_rnd.Next(specChars.Length)];
+                        break;
+                }
+
+                tbPassword.Text = password;
+                Clipboard.SetText(password);
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                rtbNotepad.LoadFile("notepad.rtf");
+                clbPassword.SetItemChecked(0,true);
             }
             catch (Exception exception)
             {
