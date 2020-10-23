@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MyUtilities
@@ -7,10 +9,63 @@ namespace MyUtilities
     {
         private int _count;
         private readonly Random _rnd = new Random();
-        char[] specChars = new char[]{'!', '@', '#', '$', '%', '&', '~'};
+        private readonly char[] _specChars = { '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '<', '>', '?', '|', '/', '`', '=', '-' };
+
+        private readonly Dictionary<string, double> metrica = new Dictionary<string, double>();
+
+        private readonly Dictionary<string, double> Distance = new Dictionary<string, double>
+        {
+            {"mm", 1},
+            {"cm", 10},
+            {"dm", 100},
+            {"m", 1000},
+            {"km", 1000000},
+            {"mile", 1609344}
+        };
+
+        private readonly Dictionary<string, double> Weight = new Dictionary<string, double>
+        {
+            {"g", 1},
+            {"kg", 1000},
+            {"t", 1000000},
+            {"lb", 453.6},
+            {"oz", 283}
+        };
+
+        private enum Operation
+        {
+            AddMetrica,
+            AddAll
+        }
+
+        private void MetricaComplete(Dictionary<string, double> dictionary, Operation operation = Operation.AddMetrica)
+        {
+            if (operation == Operation.AddAll)
+            {
+                metrica.Clear();
+                cbFrom.Items.Clear();
+                cbTo.Items.Clear();
+            }
+
+            foreach (var value in dictionary)
+            {
+                metrica.Add(value.Key, value.Value);
+
+                if (operation == Operation.AddAll)
+                {
+                    cbFrom.Items.Add(value.Key);
+                    cbTo.Items.Add(value.Key);
+                }
+            }
+
+            cbFrom.Text = cbTo.Text = dictionary.First().Key;
+        }
+
+
         public MainForm()
         {
             InitializeComponent();
+            MetricaComplete(Distance);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -43,7 +98,7 @@ namespace MyUtilities
 
         private void bGenerator_Click(object sender, EventArgs e)
         {
-            int random = _rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+            var random = _rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
             lblRandom.Text = random.ToString();
             if (cRandomUniq.Checked)
             {
@@ -66,7 +121,7 @@ namespace MyUtilities
 
         private void tsmiAddDate_Click(object sender, EventArgs e)
         {
-           rtbNotepad.AppendText(DateTime.Now.ToShortDateString()+"\r\n");
+            rtbNotepad.AppendText(DateTime.Now.ToShortDateString() + "\r\n");
         }
 
         private void tsmiAddTime_Click(object sender, EventArgs e)
@@ -101,13 +156,13 @@ namespace MyUtilities
 
         private void buttonCreatePassword_Click(object sender, EventArgs e)
         {
-            if(clbPassword.CheckedItems.Count==0)
+            if (clbPassword.CheckedItems.Count == 0)
                 return;
-            string password = "";
-            for (int i = 0; i < nudPassLength.Value; i++)
+            var password = "";
+            for (var i = 0; i < nudPassLength.Value; i++)
             {
-                int n = _rnd.Next(0, clbPassword.CheckedItems.Count);
-                string s = clbPassword.CheckedItems[n].ToString();
+                var n = _rnd.Next(0, clbPassword.CheckedItems.Count);
+                var s = clbPassword.CheckedItems[n].ToString();
                 switch (s)
                 {
                     case "Cipher":
@@ -120,7 +175,7 @@ namespace MyUtilities
                         password += Convert.ToChar(_rnd.Next(97, 122));
                         break;
                     default:
-                        password += specChars[_rnd.Next(specChars.Length)];
+                        password += _specChars[_rnd.Next(_specChars.Length)];
                         break;
                 }
 
@@ -134,11 +189,39 @@ namespace MyUtilities
             try
             {
                 rtbNotepad.LoadFile("notepad.rtf");
-                clbPassword.SetItemChecked(0,true);
+                clbPassword.SetItemChecked(0, true);
             }
             catch (Exception exception)
             {
                 MessageBox.Show("Load Error", "Error");
+            }
+        }
+
+        private void btnConvertMoney_Click(object sender, EventArgs e)
+        {
+            var m1 = metrica[cbFrom.Text];
+            var m2 = metrica[cbTo.Text];
+            var m3 = Convert.ToDouble(tbFrom.Text);
+            tbTo.Text = (m1 * m3 / m2).ToString();
+        }
+
+        private void btnReverse_Click(object sender, EventArgs e)
+        {
+            var temp = cbFrom.Text;
+            cbFrom.Text = cbTo.Text;
+            cbTo.Text = temp;
+        }
+
+        private void cbChoose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbChoose.Text)
+            {
+                case "Distance":
+                    MetricaComplete(Distance, Operation.AddAll);
+                    break;
+                case "Weight":
+                    MetricaComplete(Weight, Operation.AddAll);
+                    break;
             }
         }
     }

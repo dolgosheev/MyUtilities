@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tMenu = new System.Windows.Forms.TabControl();
+            this.tConverter = new System.Windows.Forms.TabPage();
+            this.cbChoose = new System.Windows.Forms.ComboBox();
+            this.btnReverse = new System.Windows.Forms.Button();
+            this.tbTo = new System.Windows.Forms.TextBox();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.btnConvertMoney = new System.Windows.Forms.Button();
+            this.cbTo = new System.Windows.Forms.ComboBox();
+            this.cbFrom = new System.Windows.Forms.ComboBox();
             this.tPassGenerator = new System.Windows.Forms.TabPage();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.buttonCreatePassword = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nudPassLength = new System.Windows.Forms.NumericUpDown();
             this.clbPassword = new System.Windows.Forms.CheckedListBox();
@@ -52,7 +61,6 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNotepad = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,9 +71,9 @@
             this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonCreatePassword = new System.Windows.Forms.Button();
-            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.tMenu.SuspendLayout();
+            this.tConverter.SuspendLayout();
             this.tPassGenerator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPassLength)).BeginInit();
             this.tNotepad.SuspendLayout();
@@ -76,26 +84,116 @@
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(473, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // tMenu
             // 
+            this.tMenu.Controls.Add(this.tConverter);
             this.tMenu.Controls.Add(this.tPassGenerator);
             this.tMenu.Controls.Add(this.tNotepad);
             this.tMenu.Controls.Add(this.tGenerator);
             this.tMenu.Controls.Add(this.tCounter);
             this.tMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tMenu.Location = new System.Drawing.Point(0, 48);
+            this.tMenu.Location = new System.Drawing.Point(0, 24);
             this.tMenu.Name = "tMenu";
             this.tMenu.SelectedIndex = 0;
-            this.tMenu.Size = new System.Drawing.Size(473, 268);
+            this.tMenu.Size = new System.Drawing.Size(473, 292);
             this.tMenu.TabIndex = 1;
+            // 
+            // tConverter
+            // 
+            this.tConverter.Controls.Add(this.cbChoose);
+            this.tConverter.Controls.Add(this.btnReverse);
+            this.tConverter.Controls.Add(this.tbTo);
+            this.tConverter.Controls.Add(this.tbFrom);
+            this.tConverter.Controls.Add(this.btnConvertMoney);
+            this.tConverter.Controls.Add(this.cbTo);
+            this.tConverter.Controls.Add(this.cbFrom);
+            this.tConverter.Location = new System.Drawing.Point(4, 22);
+            this.tConverter.Name = "tConverter";
+            this.tConverter.Size = new System.Drawing.Size(465, 266);
+            this.tConverter.TabIndex = 4;
+            this.tConverter.Text = "Converter";
+            this.tConverter.UseVisualStyleBackColor = true;
+            // 
+            // cbChoose
+            // 
+            this.cbChoose.FormattingEnabled = true;
+            this.cbChoose.Items.AddRange(new object[] {
+            "Distance",
+            "Weight"});
+            this.cbChoose.Location = new System.Drawing.Point(156, 24);
+            this.cbChoose.Name = "cbChoose";
+            this.cbChoose.Size = new System.Drawing.Size(152, 21);
+            this.cbChoose.TabIndex = 6;
+            this.cbChoose.Text = "Distance";
+            this.cbChoose.SelectedIndexChanged += new System.EventHandler(this.cbChoose_SelectedIndexChanged);
+            // 
+            // btnReverse
+            // 
+            this.btnReverse.Location = new System.Drawing.Point(154, 58);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(155, 20);
+            this.btnReverse.TabIndex = 5;
+            this.btnReverse.Text = "<-->";
+            this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
+            // 
+            // tbTo
+            // 
+            this.tbTo.Location = new System.Drawing.Point(324, 91);
+            this.tbTo.Name = "tbTo";
+            this.tbTo.ReadOnly = true;
+            this.tbTo.Size = new System.Drawing.Size(127, 20);
+            this.tbTo.TabIndex = 4;
+            // 
+            // tbFrom
+            // 
+            this.tbFrom.Location = new System.Drawing.Point(8, 93);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(126, 20);
+            this.tbFrom.TabIndex = 3;
+            this.tbFrom.Text = "1";
+            // 
+            // btnConvertMoney
+            // 
+            this.btnConvertMoney.Location = new System.Drawing.Point(154, 91);
+            this.btnConvertMoney.Name = "btnConvertMoney";
+            this.btnConvertMoney.Size = new System.Drawing.Size(155, 20);
+            this.btnConvertMoney.TabIndex = 2;
+            this.btnConvertMoney.Text = "Convert";
+            this.btnConvertMoney.UseVisualStyleBackColor = true;
+            this.btnConvertMoney.Click += new System.EventHandler(this.btnConvertMoney_Click);
+            // 
+            // cbTo
+            // 
+            this.cbTo.FormattingEnabled = true;
+            this.cbTo.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbTo.Location = new System.Drawing.Point(323, 56);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(129, 21);
+            this.cbTo.TabIndex = 1;
+            this.cbTo.Text = "mm";
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.FormattingEnabled = true;
+            this.cbFrom.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbFrom.Location = new System.Drawing.Point(8, 57);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(129, 21);
+            this.cbFrom.TabIndex = 0;
+            this.cbFrom.Text = "mm";
             // 
             // tPassGenerator
             // 
@@ -106,15 +204,32 @@
             this.tPassGenerator.Controls.Add(this.clbPassword);
             this.tPassGenerator.Location = new System.Drawing.Point(4, 22);
             this.tPassGenerator.Name = "tPassGenerator";
-            this.tPassGenerator.Size = new System.Drawing.Size(465, 242);
+            this.tPassGenerator.Size = new System.Drawing.Size(465, 266);
             this.tPassGenerator.TabIndex = 3;
             this.tPassGenerator.Text = "Pass Gen";
             this.tPassGenerator.UseVisualStyleBackColor = true;
             // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(17, 157);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(119, 20);
+            this.tbPassword.TabIndex = 4;
+            // 
+            // buttonCreatePassword
+            // 
+            this.buttonCreatePassword.Location = new System.Drawing.Point(17, 127);
+            this.buttonCreatePassword.Name = "buttonCreatePassword";
+            this.buttonCreatePassword.Size = new System.Drawing.Size(119, 23);
+            this.buttonCreatePassword.TabIndex = 3;
+            this.buttonCreatePassword.Text = "create password";
+            this.buttonCreatePassword.UseVisualStyleBackColor = true;
+            this.buttonCreatePassword.Click += new System.EventHandler(this.buttonCreatePassword_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 81);
+            this.label1.Location = new System.Drawing.Point(15, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 2;
@@ -122,12 +237,7 @@
             // 
             // nudPassLength
             // 
-            this.nudPassLength.Location = new System.Drawing.Point(92, 77);
-            this.nudPassLength.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.nudPassLength.Location = new System.Drawing.Point(93, 99);
             this.nudPassLength.Minimum = new decimal(new int[] {
             1,
             0,
@@ -157,7 +267,7 @@
             "Special symbols"});
             this.clbPassword.Location = new System.Drawing.Point(15, 12);
             this.clbPassword.Name = "clbPassword";
-            this.clbPassword.Size = new System.Drawing.Size(97, 60);
+            this.clbPassword.Size = new System.Drawing.Size(121, 75);
             this.clbPassword.TabIndex = 0;
             // 
             // tNotepad
@@ -166,7 +276,7 @@
             this.tNotepad.Location = new System.Drawing.Point(4, 22);
             this.tNotepad.Name = "tNotepad";
             this.tNotepad.Padding = new System.Windows.Forms.Padding(3);
-            this.tNotepad.Size = new System.Drawing.Size(465, 242);
+            this.tNotepad.Size = new System.Drawing.Size(465, 266);
             this.tNotepad.TabIndex = 2;
             this.tNotepad.Text = "Notepad";
             this.tNotepad.UseVisualStyleBackColor = true;
@@ -176,7 +286,7 @@
             this.rtbNotepad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbNotepad.Location = new System.Drawing.Point(3, 3);
             this.rtbNotepad.Name = "rtbNotepad";
-            this.rtbNotepad.Size = new System.Drawing.Size(459, 236);
+            this.rtbNotepad.Size = new System.Drawing.Size(459, 260);
             this.rtbNotepad.TabIndex = 0;
             this.rtbNotepad.Text = "";
             // 
@@ -195,7 +305,7 @@
             this.tGenerator.Location = new System.Drawing.Point(4, 22);
             this.tGenerator.Name = "tGenerator";
             this.tGenerator.Padding = new System.Windows.Forms.Padding(3);
-            this.tGenerator.Size = new System.Drawing.Size(465, 242);
+            this.tGenerator.Size = new System.Drawing.Size(465, 266);
             this.tGenerator.TabIndex = 1;
             this.tGenerator.Text = "Generator";
             this.tGenerator.UseVisualStyleBackColor = true;
@@ -316,7 +426,7 @@
             this.tCounter.Location = new System.Drawing.Point(4, 22);
             this.tCounter.Name = "tCounter";
             this.tCounter.Padding = new System.Windows.Forms.Padding(3);
-            this.tCounter.Size = new System.Drawing.Size(465, 242);
+            this.tCounter.Size = new System.Drawing.Size(465, 266);
             this.tCounter.TabIndex = 0;
             this.tCounter.Text = "Counter";
             this.tCounter.UseVisualStyleBackColor = true;
@@ -363,18 +473,6 @@
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiFile,
-            this.tsmiNotepad,
-            this.tsmiHelp});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(473, 24);
-            this.menuStrip2.TabIndex = 2;
-            this.menuStrip2.Text = "menuStrip2";
             // 
             // tsmiFile
             // 
@@ -458,22 +556,19 @@
             this.tsmiAbout.Text = "About";
             this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
-            // buttonCreatePassword
+            // menuStrip2
             // 
-            this.buttonCreatePassword.Location = new System.Drawing.Point(16, 105);
-            this.buttonCreatePassword.Name = "buttonCreatePassword";
-            this.buttonCreatePassword.Size = new System.Drawing.Size(119, 23);
-            this.buttonCreatePassword.TabIndex = 3;
-            this.buttonCreatePassword.Text = "create password";
-            this.buttonCreatePassword.UseVisualStyleBackColor = true;
-            this.buttonCreatePassword.Click += new System.EventHandler(this.buttonCreatePassword_Click);
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(16, 135);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(119, 20);
-            this.tbPassword.TabIndex = 4;
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFile,
+            this.tsmiNotepad,
+            this.tsmiHelp});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip2.Size = new System.Drawing.Size(473, 24);
+            this.menuStrip2.TabIndex = 2;
+            this.menuStrip2.Text = "menuStrip2";
             // 
             // MainForm
             // 
@@ -481,13 +576,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 316);
             this.Controls.Add(this.tMenu);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "My Utilities";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tMenu.ResumeLayout(false);
+            this.tConverter.ResumeLayout(false);
+            this.tConverter.PerformLayout();
             this.tPassGenerator.ResumeLayout(false);
             this.tPassGenerator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPassLength)).EndInit();
@@ -506,16 +601,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TabControl tMenu;
         private System.Windows.Forms.TabPage tCounter;
         private System.Windows.Forms.TabPage tGenerator;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiFile;
-        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
-        private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnMinus;
@@ -532,18 +620,31 @@
         private System.Windows.Forms.CheckBox cRandomUniq;
         private System.Windows.Forms.TabPage tNotepad;
         private System.Windows.Forms.RichTextBox rtbNotepad;
-        private System.Windows.Forms.ToolStripMenuItem tsmiNotepad;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAddDate;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAddTime;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSave;
-        private System.Windows.Forms.ToolStripMenuItem tsmiLoad;
         private System.Windows.Forms.TabPage tPassGenerator;
         private System.Windows.Forms.CheckedListBox clbPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudPassLength;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button buttonCreatePassword;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNotepad;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddDate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddTime;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSave;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLoad;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.TabPage tConverter;
+        private System.Windows.Forms.TextBox tbTo;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.Button btnConvertMoney;
+        private System.Windows.Forms.ComboBox cbTo;
+        private System.Windows.Forms.ComboBox cbFrom;
+        private System.Windows.Forms.Button btnReverse;
+        private System.Windows.Forms.ComboBox cbChoose;
     }
 }
 
